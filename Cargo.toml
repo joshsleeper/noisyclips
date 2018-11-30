@@ -1,0 +1,18 @@
+[package]
+name = "noisyclips"
+version = "0.1.0"
+authors = ["Joshua Sleeper <joshua.sleeper@gmail.com>"]
+edition = "2018"
+rustc-link-search = ["/home/jsleeper/repos/noisyclips/clipnotify"]
+rustc-link-lib = ["clipnotify"]
+
+[target.'cfg(target_os = "macos")'.dependencies]
+objc = "0.2"
+objc_id = "0.1"
+objc-foundation = "0.1"
+
+[target.'cfg(all(unix, not(any(target_os = "macos", target_os = "android"))))'.dependencies]
+x11-clipboard = "0.3"
+xcb = { version = "0.8", features = [ "thread" ] }
+
+
